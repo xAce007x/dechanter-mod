@@ -27,7 +27,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class LetsMod_Mod {
 	
 	@Instance("LetsMod_Mod")
-	public static LetsMod_Mod instance;
+	public static LetsMod_Mod instance = new LetsMod_Mod();
 	
 	@SidedProxy(clientSide = "lmm_mod.ClientProxy", serverSide="lmm_mod.CommonProxy")
 	public static CommonProxy proxy;
