@@ -65,14 +65,19 @@ public class LetsMod_Mod {
 		// Item field setup
 		dechantPaperItem = new ItemDechantPaper(dechantPaperID);
 		
-		
 		// Game Registry
 		GameRegistry.registerBlock(dechanterBlock, "dechanterBlock");
 		GameRegistry.registerItem(dechantPaperItem, "dechantPaper");
 		
+		// Recipe handling
+		LetsModRecipeHandler.addRecipies();
+		
 		//Language Registry
-		LanguageRegistry.addName(dechanterBlock, "Dechanter Block");
+		LanguageRegistry.addName(dechanterBlock, "Dechanter");
 		LanguageRegistry.addName(dechantPaperItem, "Dechanting Paper");
+		
+		// Dungeon Hooks
+		// -- Removed for now -- DechanterDungeonChestHandler.addDungeonLoot();
 		
 		// Register proxy stuff.
 		proxy.registerRenderThings();
