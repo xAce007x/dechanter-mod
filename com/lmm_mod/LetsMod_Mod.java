@@ -14,6 +14,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -32,6 +33,11 @@ public class LetsMod_Mod {
 	@SidedProxy(clientSide = "lmm_mod.ClientProxy", serverSide="lmm_mod.CommonProxy")
 	public static CommonProxy proxy;
 	
+	// GUI Handler
+	private DechanterGUIHandler guiHandler = new DechanterGUIHandler();
+	
+	
+	
 	
 	// Block and Item IDs
 	protected static int dechanterBlockID;
@@ -45,7 +51,7 @@ public class LetsMod_Mod {
 	
 	
 	@PreInit
-	public static void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event) {
 		
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
@@ -57,7 +63,7 @@ public class LetsMod_Mod {
 	}
 	
 	@Init
-	public static void load(FMLInitializationEvent event) {
+	public void load(FMLInitializationEvent event) {
 		
 		// Block field setup
 		dechanterBlock = new BlockDechanter(dechanterBlockID, 0, Material.rock);
@@ -68,6 +74,7 @@ public class LetsMod_Mod {
 		// Game Registry
 		GameRegistry.registerBlock(dechanterBlock, "dechanterBlock");
 		GameRegistry.registerItem(dechantPaperItem, "dechantPaper");
+		GameRegistry.registerTileEntity(TileBlockDechanter.class, "Dechanter Block Tile Entity");
 		
 		// Recipe handling
 		LetsModRecipeHandler.addRecipies();
@@ -75,6 +82,8 @@ public class LetsMod_Mod {
 		//Language Registry
 		LanguageRegistry.addName(dechanterBlock, "Dechanter");
 		LanguageRegistry.addName(dechantPaperItem, "Dechanting Paper");
+		
+		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
 		
 		// Dungeon Hooks
 		// -- Removed for now -- DechanterDungeonChestHandler.addDungeonLoot();
@@ -84,7 +93,7 @@ public class LetsMod_Mod {
 	}
 	
 	@PostInit
-	public static void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event) {
 		
 	}
 
