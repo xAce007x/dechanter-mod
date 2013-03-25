@@ -13,7 +13,7 @@ public class TileBlockDechanter extends TileEntity implements IInventory {
 	
 	// Constructor
 	public TileBlockDechanter() {
-		this.inventory = new ItemStack[27];
+		this.inventory = new ItemStack[30];
 	}
 	
 	// Returns the Size of the inventory.
@@ -120,5 +120,4 @@ public class TileBlockDechanter extends TileEntity implements IInventory {
 			}
 		}
 	}
-
 }
