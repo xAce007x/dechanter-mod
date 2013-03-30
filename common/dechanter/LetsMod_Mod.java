@@ -1,4 +1,4 @@
-package lmm_mod;
+package dechanter;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -17,6 +17,11 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import dechanter.blocks.BlockDechanter;
+import dechanter.gui.DechanterGUIHandler;
+import dechanter.items.ItemDechantPaper;
+import dechanter.recipe.LetsModRecipeHandler;
+import dechanter.tileEntity.TileDechanter;
 
 
 @Mod(modid = "LetsMod_Mod", name="Let's Mod", version="In-Dev 1.0")
@@ -74,7 +79,7 @@ public class LetsMod_Mod {
 		// Game Registry
 		GameRegistry.registerBlock(dechanterBlock, "dechanterBlock");
 		GameRegistry.registerItem(dechantPaperItem, "dechantPaper");
-		GameRegistry.registerTileEntity(TileBlockDechanter.class, "Dechanter Block Tile Entity");
+		GameRegistry.registerTileEntity(TileDechanter.class, "Dechanter Block Tile Entity");
 		
 		// Recipe handling
 		LetsModRecipeHandler.addRecipies();

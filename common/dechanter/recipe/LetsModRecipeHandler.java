@@ -1,9 +1,10 @@
-package lmm_mod;
+package dechanter.recipe;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
+import dechanter.LetsMod_Mod;
 
 public class LetsModRecipeHandler {
 	

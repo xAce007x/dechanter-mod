@@ -1,4 +1,4 @@
-package lmm_mod;
+package dechanter.items;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,14 +13,11 @@ public class ItemDechantPaper extends Item {
 
 	public ItemDechantPaper(int itemID) {
 		super(itemID);
-		this.setItemName("dechantPaperItem").setCreativeTab(CreativeTabs.tabMisc).
-			setIconIndex(60).setMaxStackSize(8);
+		this.setCreativeTab(CreativeTabs.tabMisc).setMaxStackSize(8).
+		setUnlocalizedName("dechantPaper");
 	}
 	
-	public String getTextureFile() {
-		return "/Dechant_Items.png";
-	}
-	
+
 	public ItemStack onItemRightClick(ItemStack ItemStack, World world, Entity playerEntity) {
 
 		return ItemStack;

@@ -1,4 +1,4 @@
-package lmm_mod;
+package dechanter.tileEntity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -7,12 +7,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileBlockDechanter extends TileEntity implements IInventory {
+public class TileDechanter extends TileEntity implements IInventory {
 	
 	private ItemStack[] inventory;
 	
 	// Constructor
-	public TileBlockDechanter() {
+	public TileDechanter() {
 		this.inventory = new ItemStack[30];
 	}
 	
@@ -119,5 +119,17 @@ public class TileBlockDechanter extends TileEntity implements IInventory {
 				itemList.appendTag(tag);
 			}
 		}
+	}
+
+	@Override
+	public boolean isInvNameLocalized() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isStackValidForSlot(int i, ItemStack itemstack) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

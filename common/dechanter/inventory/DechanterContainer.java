@@ -1,5 +1,6 @@
-package lmm_mod;
+package dechanter.inventory;
 
+import dechanter.tileEntity.TileDechanter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -8,10 +9,10 @@ import net.minecraft.item.ItemStack;
 
 public class DechanterContainer extends Container {
 
-	protected TileBlockDechanter theTile;
+	protected TileDechanter theTile;
 	private int numRows;
 
-	public DechanterContainer(TileBlockDechanter theTile,
+	public DechanterContainer(TileDechanter theTile,
 			InventoryPlayer inventory) {
 
 		// Binds a tile entity to this object.

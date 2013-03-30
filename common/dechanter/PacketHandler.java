@@ -1,4 +1,4 @@
-package lmm_mod;
+package dechanter;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

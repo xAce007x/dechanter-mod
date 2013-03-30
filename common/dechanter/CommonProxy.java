@@ -1,4 +1,4 @@
-package lmm_mod;
+package dechanter;
 
 public class CommonProxy {
 	

@@ -1,6 +1,10 @@
-package lmm_mod;
+package dechanter.gui;
+
 
 import org.lwjgl.opengl.GL11;
+
+import dechanter.inventory.DechanterContainer;
+import dechanter.tileEntity.TileDechanter;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -8,14 +12,14 @@ import net.minecraft.util.StatCollector;
 
 public class DechanterGUI extends GuiContainer{
 
-	public DechanterGUI(InventoryPlayer playerInv, TileBlockDechanter tileEntity) {
+	public DechanterGUI(InventoryPlayer playerInv, TileDechanter tileEntity) {
 		super(new DechanterContainer(tileEntity, playerInv));
 	}
 
 	// Draws the background (what you can normally see) for the container's GUI
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-		int picture = mc.renderEngine.getTexture("/Dechant_Blocks.png");
+		String picture = "/Dechant_Blocks.png";
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.renderEngine.bindTexture(picture);
 		int x = (width - xSize) / 2;

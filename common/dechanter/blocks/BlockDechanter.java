@@ -1,21 +1,24 @@
-package lmm_mod;
+package dechanter.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import dechanter.LetsMod_Mod;
+import dechanter.tileEntity.TileDechanter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 public class BlockDechanter extends BlockContainer {
-
+	
+	IconRegister icon;
+	
 	public BlockDechanter(int blockID, int textureID, Material material) {
 		super(blockID, material);
 		this.setHardness(0.5f).setStepSound(Block.soundStoneFootstep)
-				.setBlockName("Dechanter")
+				//.setBlockName("Dechanter")
 				.setCreativeTab(CreativeTabs.tabBlock);
 	}
 
@@ -29,38 +32,15 @@ public class BlockDechanter extends BlockContainer {
 			
 			playerEntity.openGui(LetsMod_Mod.instance, 0, world, bx, by, bz);
 			return true;
-			
-			/* Random random = new Random();
-			int randInt1 = random.nextInt();
-			int randInt2 = random.nextInt();
-
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			DataOutputStream outputStream = new DataOutputStream(bos);
-			try {
-				outputStream.writeInt(randInt1);
-				outputStream.writeInt(randInt2);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			Packet250CustomPayload packet = new Packet250CustomPayload();
-			packet.channel = "LetsMod_Mod";
-			packet.data = bos.toByteArray();
-			packet.length = bos.size();
-
-			Side side = FMLCommonHandler.instance().getEffectiveSide();
-			if (side == Side.SERVER) {
-				EntityPlayerMP player = (EntityPlayerMP) playerEntity;
-			} else if (side == Side.CLIENT) {
-				EntityClientPlayerMP player = (EntityClientPlayerMP) playerEntity;
-				player.sendQueue.addToSendQueue(packet);
-			}
-
-			return true;
-			*/
 		}
 	}
-
+	
+	@Override
+	public void registerIcons(IconRegister iconReg) {
+		this.blockIcon = iconReg.registerIcon("blockDechanter");
+	}
+	
+	/*
 	@SideOnly(Side.CLIENT)
 	public int getBlockTextureFromSide(int side) {
 		switch (side) {
@@ -72,15 +52,15 @@ public class BlockDechanter extends BlockContainer {
 			return 0;
 		}
 	}
-
+	
 	public String getTextureFile() {
 		return "/Dechant_Blocks.png";
 	}
-
+	*/
 	@Override
 	public TileEntity createNewTileEntity(World var1) {
 		
-		return new TileBlockDechanter();
+		return new TileDechanter();
 	}
 
 }
