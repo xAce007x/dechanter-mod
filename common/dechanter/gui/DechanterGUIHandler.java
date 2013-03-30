@@ -12,24 +12,23 @@ public class DechanterGUIHandler implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z) {
-		
-		TileEntity theTile = world.getBlockTileEntity(x,y,z);
-		
-		if(theTile instanceof TileDechanter) {
-			return new DechanterContainer((TileDechanter)theTile, player.inventory);
-		}
+
+		TileEntity theTile = world.getBlockTileEntity(x, y, z);
+
+		if (theTile instanceof TileDechanter)
+			return new DechanterContainer((TileDechanter) theTile,
+					player.inventory);
 		return null;
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z) {
-		
+
 		TileEntity theTile = world.getBlockTileEntity(x, y, z);
-		
-		if(theTile instanceof TileDechanter) {
-			return new DechanterGUI(player.inventory, (TileDechanter)theTile);
-		}
+
+		if (theTile instanceof TileDechanter)
+			return new DechanterGUI(player.inventory, (TileDechanter) theTile);
 		return null;
 	}
 

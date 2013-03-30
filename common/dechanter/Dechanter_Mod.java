@@ -23,83 +23,82 @@ import dechanter.items.ItemDechantPaper;
 import dechanter.recipe.LetsModRecipeHandler;
 import dechanter.tileEntity.TileDechanter;
 
-
-@Mod(modid = "LetsMod_Mod", name="Let's Mod", version="In-Dev 1.0")
-@NetworkMod(channels = { "LetsMod_Mod" },
+@Mod(modid = "Dechanter_Mod", name = "Dechanter", version = "In-Dev 1.0")
+@NetworkMod(channels = { "Dechanter_Mod" },
 		clientSideRequired = true,
 		serverSideRequired = false,
-		packetHandler = PacketHandler.class )
+		packetHandler = PacketHandler.class)
+public class Dechanter_Mod {
 
-public class LetsMod_Mod {
-	
-	@Instance("LetsMod_Mod")
-	public static LetsMod_Mod instance = new LetsMod_Mod();
-	
-	@SidedProxy(clientSide = "lmm_mod.ClientProxy", serverSide="lmm_mod.CommonProxy")
+	@Instance("Dechanter_Mod")
+	public static Dechanter_Mod instance = new Dechanter_Mod();
+
+	@SidedProxy(clientSide = "dechanter.ClientProxy",
+			serverSide = "dechanter.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	// GUI Handler
 	private DechanterGUIHandler guiHandler = new DechanterGUIHandler();
-	
-	
-	
-	
+
 	// Block and Item IDs
 	protected static int dechanterBlockID;
 	protected static int dechantPaperID;
-	
+
 	// Block decelerations
 	public static Block dechanterBlock;
-	
+
 	// Item Decelerations
 	public static Item dechantPaperItem;
-	
-	
+
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
-		
-		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+
+		Configuration config = new Configuration(
+				event.getSuggestedConfigurationFile());
 		config.load();
-		
-		dechanterBlockID = config.getBlock("DechanterBlock", 1000, "The Dechanter Block").getInt();
-		dechantPaperID = config.getItem("DechantingPaper", 5000, "Dechanting Paper").getInt();
-		
+
+		dechanterBlockID = config.getBlock("DechanterBlock", 1000,
+				"The Dechanter Block").getInt();
+		dechantPaperID = config.getItem("DechantingPaper", 5000,
+				"Dechanting Paper").getInt();
+
 		config.save();
 	}
-	
+
 	@Init
 	public void load(FMLInitializationEvent event) {
-		
+
 		// Block field setup
 		dechanterBlock = new BlockDechanter(dechanterBlockID, 0, Material.rock);
-		
+
 		// Item field setup
 		dechantPaperItem = new ItemDechantPaper(dechantPaperID);
-		
+
 		// Game Registry
 		GameRegistry.registerBlock(dechanterBlock, "dechanterBlock");
 		GameRegistry.registerItem(dechantPaperItem, "dechantPaper");
-		GameRegistry.registerTileEntity(TileDechanter.class, "Dechanter Block Tile Entity");
-		
+		GameRegistry.registerTileEntity(TileDechanter.class,
+				"Dechanter Block Tile Entity");
+
 		// Recipe handling
 		LetsModRecipeHandler.addRecipies();
-		
-		//Language Registry
+
+		// Language Registry
 		LanguageRegistry.addName(dechanterBlock, "Dechanter");
 		LanguageRegistry.addName(dechantPaperItem, "Dechanting Paper");
-		
+
 		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
-		
+
 		// Dungeon Hooks
 		// -- Removed for now -- DechanterDungeonChestHandler.addDungeonLoot();
-		
+
 		// Register proxy stuff.
 		proxy.registerRenderThings();
 	}
-	
+
 	@PostInit
 	public void postInit(FMLPostInitializationEvent event) {
-		
+
 	}
 
 }

@@ -14,27 +14,26 @@ public class PacketHandler implements IPacketHandler {
 	@Override
 	public void onPacketData(INetworkManager manager,
 			Packet250CustomPayload packet, Player player) {
-		if (packet.channel.equals("LetsMod_Mod")) {
-				handleDechanterPacket(packet);
+		if (packet.channel.equals("Dechanter_Mod")) {
+			handleDechanterPacket(packet);
 		}
 	}
 
 	private void handleDechanterPacket(Packet250CustomPayload packet) {
-		DataInputStream inputStream = new DataInputStream(new ByteArrayInputStream(packet.data));
-		
+		DataInputStream inputStream = new DataInputStream(
+				new ByteArrayInputStream(packet.data));
+
 		int int1 = 1;
 		int int2 = 2;
-		
+
 		try {
 			int1 = inputStream.readInt();
 			int2 = inputStream.readInt();
-		} catch(IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println(int1 + " " + int2);
 	}
-	
-	
 
 }
